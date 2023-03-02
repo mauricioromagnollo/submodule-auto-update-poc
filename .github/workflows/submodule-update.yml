@@ -5,8 +5,8 @@ on:
     branches:
       - master
       - develop
-    paths:
-      - 'submodule-example/**'
+    # paths:
+    #   - 'submodule-example/**'
 
 jobs:
   update-submodule:
@@ -21,6 +21,7 @@ jobs:
         run: |
           cd submodule-example
           git fetch --all
+          git pull --rebase
           cd ..
 
       - name: Commit changes
