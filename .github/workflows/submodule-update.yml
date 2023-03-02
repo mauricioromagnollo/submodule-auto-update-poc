@@ -50,6 +50,8 @@ jobs:
 
       - name: Commit Submodule Changes
         run: |
+          git config --global user.email "mauricioromagnollo@gmail.com"
+          git config --global user.name "mauricioromagnollo"
           git add ./submodule-example
           git commit -am "chore: bump submodule example"
           git push
