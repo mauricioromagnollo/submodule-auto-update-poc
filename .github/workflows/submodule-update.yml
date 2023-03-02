@@ -5,8 +5,8 @@ on:
     branches:
       - master
       - develop
-    paths:
-      - 'submodule-example/**'
+    # paths:
+    #   - 'submodule-example/**'
 
 jobs:
   update-submodule:
@@ -21,12 +21,16 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Fetch and Rebase Submodule Changes
+      - name: Update Submodule
         run: |
-          cd submodule-example
-          git fetch --all
-          git pull --rebase
-          cd ..
+          git submodule update --remote
+
+      # - name: Fetch and Rebase Submodule Changes
+      #   run: |
+      #     cd submodule-example
+      #     git fetch --all
+      #     git pull --rebase
+      #     cd ..
 
       - name: Commit Submodule Changes
         run: |
