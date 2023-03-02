@@ -1,12 +1,12 @@
-name: Update submodule
+name: Update Submodule
 
 on:
   push:
     branches:
       - master
       - develop
-    # paths:
-    #   - 'submodule-example/**'
+    paths:
+      - 'submodule-example/**'
 
 jobs:
   update-submodule:
@@ -16,22 +16,22 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
         with:
           submodules: 'recursive'
 
-      - name: Update submodule
+      - name: Fetch and Rebase Submodule Changes
         run: |
           cd submodule-example
           git fetch --all
           git pull --rebase
           cd ..
 
-      - name: Commit changes
+      - name: Commit Submodule Changes
         run: |
-          git config --local user.email "mauricioromagnollo@gmail.com"
-          git config --local user.name "mauricioromagnollo"
+          git config --local user.email "noreply@github.com"
+          git config --local user.name "Github Actions Bot"
           git add ./submodule-example
           git commit -am "chore: bump submodule example"
           git push
