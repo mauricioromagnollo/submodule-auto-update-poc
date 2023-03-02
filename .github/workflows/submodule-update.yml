@@ -21,16 +21,12 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Update Submodule
+      - name: Fetch and Rebase Submodule Changes
         run: |
-          git submodule update --remote
-
-      # - name: Fetch and Rebase Submodule Changes
-      #   run: |
-      #     cd submodule-example
-      #     git fetch --all
-      #     git pull --rebase
-      #     cd ..
+          cd submodule-example
+          git fetch --all
+          git pull --rebase
+          cd ..
 
       - name: Commit Submodule Changes
         run: |
