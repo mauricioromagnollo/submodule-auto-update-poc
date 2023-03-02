@@ -11,6 +11,11 @@ on:
 jobs:
   update-submodule:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # To push a branch 
+      # pull-requests: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
