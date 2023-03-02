@@ -6,7 +6,7 @@ on:
       - master
       - develop
     paths:
-      - './submodule-example/**'
+      - 'submodule-example/**'
 
 jobs:
   update-submodule:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Update submodule
         run: |
-          cd ./submodule-example
+          cd submodule-example
           git fetch --all
           cd ..
 
