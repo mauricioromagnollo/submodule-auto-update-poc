@@ -23,15 +23,33 @@ jobs:
 
       - name: Fetch and Rebase Submodule Changes
         run: |
+          git config --global user.email "mauricioromagnollo@gmail.com"
+          git config --global user.name "mauricioromagnollo"
           cd submodule-example
           git fetch --all
           git pull --rebase
           cd ..
 
+      # - name: Get last commit author
+      #   id: last-commit
+      #   run: |
+      #     export COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
+      #     export COMMIT_EMAIL=$(git log -1 --pretty=format:'%ae')
+      #     echo "::set-output name=author::$COMMIT_AUTHOR"
+      #     echo "::set-output name=email::$COMMIT_EMAIL"
+
+      # - name: Commit Submodule Changes
+      #   run: |
+      #     git config --local user.email ${{ steps.last-commit.outputs.email }}
+      #     git config --local user.name ${{ steps.last-commit.outputs.author }}
+      #     git add ./submodule-example
+      #     git commit -am "chore: bump submodule example"
+      #     git push
+          # git config --local user.email "mauricioromagnollo@gmail.com"
+          # git config --local user.name "mauricioromagnollo"
+
       - name: Commit Submodule Changes
         run: |
-          git config --local user.email "noreply@github.com"
-          git config --local user.name "Github Actions Bot"
           git add ./submodule-example
           git commit -am "chore: bump submodule example"
           git push
